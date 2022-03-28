@@ -33,7 +33,7 @@ app.use(function (err, req, res, next) {
 
 // Implement 404 error route
 app.use(function (req, res, next) {
-  res.status(404).send('Sorry we could not find that.')
+  res.status(404).send('Oof. 404 error.')
 })
 
 // Start express app
