@@ -40,9 +40,13 @@ exports.figsCreate = async (req, res) => {
     $('.s-item__info', html).each(function() {
             
 
-        const title = $(this).find('.s-item__title').text()
+        const title1 = $(this).find('.s-item__title').text()
 
-        if ((title.includes(req.body.setNumber) && title.includes(req.body.name)) && !(title.includes('LOT') || title.includes('lot'))) { 
+        const title = title1.toUpperCase()
+
+        const namecaps = req.body.name.toUpperCase()
+
+        if ((title.includes(req.body.setNumber) && title.includes(namecaps) && title.includes('FIG')) && !title.includes('LOT')) { 
 
             const amount = $(this).find('.s-item__price').text()
             if (amount !== ''){
