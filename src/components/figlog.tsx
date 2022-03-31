@@ -15,8 +15,8 @@ export const FigLog = () => {
   const [imageUrl, setImageUrl] = useState('')
   const [name, setName] = useState('')
   const [setNumber, setSetNumber] = useState('')
-  const [price, setPrice] = useState(0) //call webscraper here
-  const [listUrl, setListUrl] = useState('')
+  //const [price, setPrice] = useState(0) //call webscraper here
+  const [not, setNot] = useState('')
   const [figs, setFigs] = useState([])
   const [loading, setLoading] = useState(true)
 
@@ -48,7 +48,7 @@ export const FigLog = () => {
     setImageUrl('')
     setName('')
     setSetNumber('')
-    setListUrl('')
+    setNot('')
     //no need to reset price since price is not an input
   }
 
@@ -59,7 +59,7 @@ export const FigLog = () => {
       imageUrl: imageUrl,
       name: name,
       setNumber: setNumber,
-      listUrl: listUrl
+      not: not
     })
     .then(res => {
       console.log(res.data)
@@ -74,7 +74,7 @@ export const FigLog = () => {
   // Submit new fig
   const handleFigSubmit = () => {
     // Check if all fields are filled
-    if (imageUrl.length > 0 && name.length > 0 && setNumber.length > 0 && listUrl.length > 0) {
+    if (imageUrl.length > 0 && name.length > 0 && setNumber.length > 0) {
       // Create new minifig
       handleFigCreate()
 
@@ -136,8 +136,8 @@ export const FigLog = () => {
             </fieldset>
 
             <fieldset>
-              <label className="form-label" htmlFor="rating">Enter Url of eBay results:</label>
-              <input className="form-input" type="text" id="listUrl" name="listUrl" value={listUrl} onChange={(e) => setListUrl(e.currentTarget.value)} />
+              <label className="form-label" htmlFor="not">Enter terms to exclude from search separated by spaces:</label>
+              <input className="form-input" type="text" id="not" name="not" value={not} onChange={(e) => setNot(e.currentTarget.value)} />
             </fieldset>
           </div>
         </div>

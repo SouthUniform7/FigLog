@@ -26,8 +26,14 @@ exports.figsCreate = async (req, res) => {
   var max = 0
   let minifig = 0
 
+  let name = req.body.name.replace(' ', '+')
+
+  let nots = req.body.not.toUpperCase().split(' ')
+
+  let url = `https://www.ebay.com/sch/i.html?_from=R40&_nkw=${name}+${req.body.setNumber}&_sacat=0&rt=nc&LH_Sold=1&LH_Complete=1`
+
   function get_minifig_html () {
-    return axios.get(req.body.listUrl).then(response => response.data).catch(err => console.log(err))
+    return axios.get(url).then(response => response.data).catch(err => console.log(err))
   }
 
   get_minifig_html()
@@ -46,7 +52,8 @@ exports.figsCreate = async (req, res) => {
 
         const namecaps = req.body.name.toUpperCase()
 
-        if ((title.includes(req.body.setNumber) && title.includes(namecaps) && title.includes('FIG')) && !title.includes('LOT')) { 
+        if ((title.includes(req.body.setNumber) && title.includes(namecaps) && title.includes('FIG')) && !(title.includes('LOT'))) { 
+          if (nots.some(element => !(title.includes(element)))){ //if title does not include any of the nots items
 
             const amount = $(this).find('.s-item__price').text()
             if (amount !== ''){
@@ -58,7 +65,8 @@ exports.figsCreate = async (req, res) => {
                 }
             }
         }
-    })
+      }
+      })
 
     knex('figs')
       .insert({ // insert new record, a fig
@@ -66,7 +74,7 @@ exports.figsCreate = async (req, res) => {
         'name': req.body.name,
         'setNumber': req.body.setNumber,
         'price': max,
-        'listUrl': req.body.listUrl
+        'listUrl': url
       })
       .then(() => {
         // Send a success message in response
