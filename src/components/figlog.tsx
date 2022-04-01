@@ -9,6 +9,9 @@ import { FigList } from './fig-list'
 // Import styles
 import './../styles/figlog.css'
 
+const link = '143.198.122.156'
+const local = 'localhost:4001'
+
 // Create figlog component
 export const FigLog = () => {
   // Prepare states
@@ -16,7 +19,7 @@ export const FigLog = () => {
   const [name, setName] = useState('')
   const [setNumber, setSetNumber] = useState('')
   //const [price, setPrice] = useState(0) //call webscraper here
-  const [not, setNot] = useState('')
+  const [not, setNot] = useState('None')
   const [figs, setFigs] = useState([])
   const [loading, setLoading] = useState(true)
 
@@ -32,7 +35,7 @@ export const FigLog = () => {
   const fetchFigs = async () => {
     // Send GET request to 'figs/all' endpoint
     axios
-      .get('http://143.198.122.156/figs/all')
+      .get(`http://${local}/figs/all`)
       .then(response => {
         // Update the figs state
         setFigs(response.data)
@@ -48,14 +51,14 @@ export const FigLog = () => {
     setImageUrl('')
     setName('')
     setSetNumber('')
-    setNot('')
+    setNot('None')
     //no need to reset price since price is not an input
   }
 
   // Create new book
   const handleFigCreate = () => {
     // Send POST request to 'figs/create' endpoint
-    axios.post('http://143.198.122.156/figs/create', {
+    axios.post(`http://${local}/figs/create`, {
       imageUrl: imageUrl,
       name: name,
       setNumber: setNumber,
@@ -74,7 +77,7 @@ export const FigLog = () => {
   // Submit new fig
   const handleFigSubmit = () => {
     // Check if all fields are filled
-    if (imageUrl.length > 0 && name.length > 0 && setNumber.length > 0) {
+    if (name.length > 0 && setNumber.length > 0) {
       // Create new minifig
       handleFigCreate()
 
@@ -89,7 +92,7 @@ export const FigLog = () => {
   const handleFigRemove = (id: number, name: string) => {
     // Send PUT request to 'figs/delete' endpoint
     axios
-      .put('http://143.198.122.156/figs/delete', { id: id })
+      .put(`http://${local}/figs/delete`, { id: id })
       .then(() => {
         console.log(`Minifig ${name} removed.`)
 
@@ -103,7 +106,7 @@ export const FigLog = () => {
   // Reset fig list (remove all figs)
   const handleListReset = () => {
     // Send PUT request to 'figs/reset' endpoint
-    axios.put('http://143.198.122.156/figs/reset')
+    axios.put(`http://${local}/figs/reset`)
     .then(() => {
       // Fetch all figs to refresh
       // the figs on the figLog
@@ -119,7 +122,7 @@ export const FigLog = () => {
         <div className="form-wrapper" onSubmit={handleFigSubmit}>
           <div className="form-row">
             <fieldset>
-              <label className="form-label" htmlFor="imageUrl">Enter Image Url:</label>
+              <label className="form-label" htmlFor="imageUrl">Enter Custom Image Url:</label>
               <input className="form-input" type="text" id="imageUrl" name="imageUrl" value={imageUrl} onChange={(e) => setImageUrl(e.currentTarget.value)} />
             </fieldset>
 

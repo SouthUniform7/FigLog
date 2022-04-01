@@ -28,7 +28,16 @@ exports.figsCreate = async (req, res) => {
 
   let name = req.body.name.replace(' ', '+')
 
-  let nots = req.body.not.toUpperCase().split(' ')
+  let not1 = req.body.not.toUpperCase()
+
+  let nots = not1.split(" ")
+
+  nots.push("Bruh")
+
+  let listUrl = ''
+
+  let image = req.body.imageUrl
+
 
   let url = `https://www.ebay.com/sch/i.html?_from=R40&_nkw=${name}+${req.body.setNumber}&_sacat=0&rt=nc&LH_Sold=1&LH_Complete=1`
 
@@ -43,8 +52,9 @@ exports.figsCreate = async (req, res) => {
 
     const $ = cheerio.load(html)
 
-    $('.s-item__info', html).each(function() {
-            
+    $('.s-item__pl-on-bottom', html).each(function() {
+
+        const a = $(this)
 
         const title1 = $(this).find('.s-item__title').text()
 
@@ -52,29 +62,40 @@ exports.figsCreate = async (req, res) => {
 
         const namecaps = req.body.name.toUpperCase()
 
-        if ((title.includes(req.body.setNumber) && title.includes(namecaps) && title.includes('FIG')) && !(title.includes('LOT'))) { 
-          if (nots.some(element => !(title.includes(element)))){ //if title does not include any of the nots items
+        if ((title.includes(req.body.setNumber) && title.includes(namecaps) && title.includes('FIG')) && !(title.includes('LOT') || title.includes('SET'))) { 
+              if (!(nots.some(element => (title.includes(element))))){ //if title does not include any of the nots items
 
-            const amount = $(this).find('.s-item__price').text()
-            if (amount !== ''){
-                
-                const dollars = parseFloat(amount.replace(/[^\d.-]/g, ''))
+              const amount = $(this).find('.s-item__price').text()
+              
+              if (amount !== ''){
+                  
+                  const dollars = parseFloat(amount.replace(/[^\d.-]/g, ''))
 
-                if (dollars > max){
-                    max = dollars
+                  if (dollars > max){
+                      max = dollars
+                      listUrl = a.find('.s-item__info').find('a').attr('href')//listing link
+                      if (image === ''){
+                        //if ($(this).find('.s-item__image-wrapper').children('img').attr('alt').toUpperCase === title){
+                          image = a.find('.s-item__image-wrapper').children('img').attr('src') //image url
+                        //}
+                      }
+                  }
                 }
-            }
-        }
+
+                
+
+              }
+            
       }
       })
 
     knex('figs')
       .insert({ // insert new record, a fig
-        'imageUrl': req.body.imageUrl,
+        'imageUrl': image,
         'name': req.body.name,
         'setNumber': req.body.setNumber,
         'price': max,
-        'listUrl': url
+        'listUrl': listUrl
       })
       .then(() => {
         // Send a success message in response

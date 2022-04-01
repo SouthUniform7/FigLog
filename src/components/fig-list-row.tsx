@@ -23,7 +23,7 @@ export const FigListRow = (props: FigListRowUI) => (
     </td>
 
     <td className="table-item">
-      {props.fig.imageUrl}
+      <img src={props.fig.imageUrl}></img>
     </td>
 
     <td className="table-item">
