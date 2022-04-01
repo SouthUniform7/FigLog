@@ -35,7 +35,7 @@ export const FigLog = () => {
   const fetchFigs = async () => {
     // Send GET request to 'figs/all' endpoint
     axios
-      .get(`http://${local}/figs/all`)
+      .get(`http://${link}/figs/all`)
       .then(response => {
         // Update the figs state
         setFigs(response.data)
@@ -58,7 +58,7 @@ export const FigLog = () => {
   // Create new book
   const handleFigCreate = () => {
     // Send POST request to 'figs/create' endpoint
-    axios.post(`http://${local}/figs/create`, {
+    axios.post(`http://${link}/figs/create`, {
       imageUrl: imageUrl,
       name: name,
       setNumber: setNumber,
@@ -92,7 +92,7 @@ export const FigLog = () => {
   const handleFigRemove = (id: number, name: string) => {
     // Send PUT request to 'figs/delete' endpoint
     axios
-      .put(`http://${local}/figs/delete`, { id: id })
+      .put(`http://${link}/figs/delete`, { id: id })
       .then(() => {
         console.log(`Minifig ${name} removed.`)
 
@@ -106,7 +106,7 @@ export const FigLog = () => {
   // Reset fig list (remove all figs)
   const handleListReset = () => {
     // Send PUT request to 'figs/reset' endpoint
-    axios.put(`http://${local}/figs/reset`)
+    axios.put(`http://${link}/figs/reset`)
     .then(() => {
       // Fetch all figs to refresh
       // the figs on the figLog
