@@ -62,7 +62,7 @@ exports.figsCreate = async (req, res) => {
 
         const namecaps = req.body.name.toUpperCase()
 
-        if ((title.includes(req.body.setNumber) && title.includes(namecaps) && title.includes('FIG')) && !(title.includes('LOT') || title.includes('SET'))) { 
+        if ((title.includes(req.body.setNumber) && title.includes(namecaps) && title.includes('FIG')) && !(title.includes('LOT') || title.includes('SET') || title.includes('COMPLETE'))) { 
               if (!(nots.some(element => (title.includes(element))))){ //if title does not include any of the nots items
 
               const amount = $(this).find('.s-item__price').text()
