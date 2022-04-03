@@ -28,6 +28,8 @@ exports.figsCreate = async (req, res) => {
 
   let name = req.body.name.replace(' ', '+')
 
+  let set = req.body.setNumber.replace(' ', '+')
+
   let not1 = req.body.not.toUpperCase()
 
   let nots = not1.split(" ")
@@ -39,7 +41,7 @@ exports.figsCreate = async (req, res) => {
   let image = req.body.imageUrl
 
 
-  let url = `https://www.ebay.com/sch/i.html?_from=R40&_nkw=${name}+${req.body.setNumber}&_sacat=0&rt=nc&LH_Sold=1&LH_Complete=1`
+  let url = `https://www.ebay.com/sch/i.html?_from=R40&_nkw=${name}+${set}&_sacat=0&rt=nc&LH_Sold=1&LH_Complete=1`
 
   function get_minifig_html () {
     return axios.get(url).then(response => response.data).catch(err => console.log(err))
@@ -62,7 +64,9 @@ exports.figsCreate = async (req, res) => {
 
         const namecaps = req.body.name.toUpperCase()
 
-        if ((title.includes(req.body.setNumber) && title.includes(namecaps) && title.includes('FIG')) && !(title.includes('LOT') || title.includes('SET') || title.includes('COMPLETE'))) { 
+        const setCaps = req.body.setNumber.toUpperCase()
+
+        if ((title.includes(setCaps) && title.includes(namecaps) && title.includes('FIG')) && !(title.includes('LOT') || title.includes('SET') || title.includes('COMPLETE'))) { 
               if (!(nots.some(element => (title.includes(element))))){ //if title does not include any of the nots items
 
               const amount = $(this).find('.s-item__price').text()
