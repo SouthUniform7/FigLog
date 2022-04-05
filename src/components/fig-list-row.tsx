@@ -23,7 +23,7 @@ export const FigListRow = (props: FigListRowUI) => (
     </td>
 
     <td className="table-item">
-      <img src={props.fig.imageUrl}></img>
+      <img src={props.fig.imageUrl} alt={props.fig.name}/>
     </td>
 
     <td className="table-item">
@@ -39,7 +39,7 @@ export const FigListRow = (props: FigListRowUI) => (
     </td>
 
     <td className="table-item">
-      {props.fig.listUrl}
+    <a href= {props.fig.listUrl}>eBay Listing</a>
     </td>
 
     <td className="table-item">

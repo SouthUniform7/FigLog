@@ -122,20 +122,20 @@ export const FigLog = () => {
         <div className="form-wrapper" onSubmit={handleFigSubmit}>
           <div className="form-row">
             <fieldset>
-              <label className="form-label" htmlFor="imageUrl">Enter Custom Image Url:</label>
-              <input className="form-input" type="text" id="imageUrl" name="imageUrl" value={imageUrl} onChange={(e) => setImageUrl(e.currentTarget.value)} />
+              <label className="form-label" htmlFor="name">Enter Name:</label>
+              <input className="form-input" type="text" id="name" name="name" value={name} onChange={(e) => setName(e.currentTarget.value)} />
             </fieldset>
 
             <fieldset>
-              <label className="form-label" htmlFor="name">Enter Name:</label>
-              <input className="form-input" type="text" id="name" name="name" value={name} onChange={(e) => setName(e.currentTarget.value)} />
+              <label className="form-label" htmlFor="setNumber">Enter Set Number:</label>
+              <input className="form-input" type="text" id="setNumber" name="setNumber" value={setNumber} onChange={(e) => setSetNumber(e.currentTarget.value)} />
             </fieldset>
           </div>
 
           <div className="form-row">
             <fieldset>
-              <label className="form-label" htmlFor="setNumber">Enter Set Number:</label>
-              <input className="form-input" type="text" id="setNumber" name="setNumber" value={setNumber} onChange={(e) => setSetNumber(e.currentTarget.value)} />
+              <label className="form-label" htmlFor="imageUrl">Enter Custom Image Url:</label>
+              <input className="form-input" type="text" id="imageUrl" name="imageUrl" value={imageUrl} onChange={(e) => setImageUrl(e.currentTarget.value)} />
             </fieldset>
 
             <fieldset>
