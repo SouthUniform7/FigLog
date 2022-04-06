@@ -30,21 +30,21 @@ export const FigList = (props: FigListUI) => {
 
   return (
     <table className="table">
-        <thead>
-          <tr>
-            <th className="table-head-item" />
+        <thead className="table-head">
+          <tr className="head-row">
+            <th className="table-head-num" />
 
-            <th className="table-head-item">Image</th>
+            <th className="table-head-image">Image</th>
 
-            <th className="table-head-item">Name</th>
+            <th className="table-head-name">Name</th>
 
-            <th className="table-head-item">Set Number</th>
+            <th className="table-head-set">Set Number</th>
 
-            <th className="table-head-item">Price</th>
+            <th className="table-head-price">Price</th>
 
-            <th className="table-head-item">List Url</th>
+            <th className="table-head-url">List Url</th>
 
-            <th className="table-head-item" />
+            <th className="table-head-nonce" />
           </tr>
         </thead>
 

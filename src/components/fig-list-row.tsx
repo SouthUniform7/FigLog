@@ -22,27 +22,27 @@ export const FigListRow = (props: FigListRowUI) => (
       {props.position}
     </td>
 
-    <td className="table-item">
+    <td className="table-image">
       <img src={props.fig.imageUrl} alt={props.fig.name}/>
     </td>
 
-    <td className="table-item">
+    <td className="table-name">
       {props.fig.name}
     </td>
 
-    <td className="table-item">
+    <td className="table-set">
       {props.fig.setNumber}
     </td>
 
-    <td className="table-item">
+    <td className="table-price">
       {props.fig.price}
     </td>
 
-    <td className="table-item">
+    <td className="table-url">
     <a href= {props.fig.listUrl}>eBay Listing</a>
     </td>
 
-    <td className="table-item">
+    <td className="table-btn">
       <button
         className="btn btn-remove"
         onClick={() => props.handleFigRemove(props.fig.id, props.fig.name)}>

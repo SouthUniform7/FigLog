@@ -1,35 +1,205 @@
 .table {
     width: 100%;
     border-collapse: collapse;
+    display: flex;
+    flex-direction: column;
   }
   
   .table-body {
     background: rgb(219, 233, 250) none repeat scroll 0 0;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .table-head {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .head-row {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
   }
   
-  .table-head-item {
+  .table-head-num {
     padding: 6px 12px;
-    width: 20%;
+    width: 6%;
+    column-span: 1;
     font-size: 12px;
     font-weight: 500;
     color: rgba(0, 0, 0, .38);
     text-align: right;
     text-transform: uppercase;
   }
+
+  .table-head-image {
+    padding: 6px 12px;
+    width: 30%;
+    column-span: 1;
+    font-size: 12px;
+    font-weight: 500;
+    color: rgba(0, 0, 0, .38);
+    text-align: center;
+    text-transform: uppercase;
+  }
+
+  .table-head-name {
+    padding: 6px 12px;
+    width: 15%;
+    column-span: 1;
+    font-size: 12px;
+    font-weight: 500;
+    color: rgba(0, 0, 0, .38);
+    text-align: center;
+    text-transform: uppercase;
+  }
+
+  .table-head-set {
+    padding: 6px 12px;
+    width: 20%;
+    column-span: 1;
+    font-size: 12px;
+    font-weight: 500;
+    color: rgba(0, 0, 0, .38);
+    text-align: center;
+    text-transform: uppercase;
+  }
+
+  .table-head-price {
+    padding: 6px 12px;
+    width: 10%;
+    column-span: 1;
+    font-size: 12px;
+    font-weight: 500;
+    color: rgba(0, 0, 0, .38);
+    text-align: left;
+    text-transform: uppercase;
+  }
+
+  .table-head-url {
+    padding: 6px 12px;
+    width: 10%;
+    column-span: 1;
+    font-size: 12px;
+    font-weight: 500;
+    color: rgba(0, 0, 0, .38);
+    text-align: center;
+    text-transform: uppercase;
+  }
+
+  .table-head-nonce {
+    padding: 6px 12px;
+    width: 17%;
+    column-span: 1;
+    font-size: 12px;
+    font-weight: 500;
+    color: rgba(0, 0, 0, .38);
+    text-align: left;
+    text-transform: uppercase;
+  }
+
+  .table-row {
+    display: flex;
+    align-content: center;
+    justify-content: space-around;
+  }
   
   .table-row:nth-child(even) {
     background: rgb(236, 243, 252) none repeat scroll 0 0;
+  }
+
+  .table-row:nth-child(odd) {
+    background: rgb(219, 233, 250) none repeat scroll 0 0;
   }
   
   .table-item {
     overflow: hidden;
     padding: 12px;
-    height: 24px;
+    height: 100%;
+    width: 15%;
+    font-size: 14px;
+    line-height: 24px;
+    text-align: left;
+    
+  }
+
+  .table-image {
+    display: flex;
+    overflow: hidden;
+    padding: 12px;
+    width: auto;
+    max-width: 30%;
+    height: auto;
+    line-height: 24px;
+    align-self: center;
+    flex: 0 0 auto;
+    object-fit: contain;
+  }
+
+  .table-image img{
+    display: block;
+    min-width: 200px;
+    max-width: 200px; /*actual image width*/
+    height: auto; 
+    margin: auto; 
+  }
+  .table-name {
+    overflow: hidden;
+    padding: 12px;
+    height: 100%;
+    width: 15%;
+    font-size: 14px;
+    line-height: 24px;
+    text-align: center;
+    text-overflow: ellipsis;
+  }
+
+  .table-set {
+    overflow: hidden;
+    padding: 12px;
+    height: 100%;
+    width: 20%;
+    font-size: 14px;
+    line-height: 24px;
+    text-align: center;
+    text-overflow: ellipsis;
+  }
+
+  .table-price {
+    overflow: hidden;
+    padding: 12px;
+    height: 100%;
+    width: 10%;
     font-size: 14px;
     line-height: 24px;
     text-align: right;
     text-overflow: ellipsis;
   }
+
+  .table-url {
+    overflow: hidden;
+    padding: 12px;
+    height: 100%;
+    width: 17%;
+    font-size: 14px;
+    line-height: 24px;
+    text-align: right;
+    text-overflow: ellipsis;
+  }
+
+  .table-btn {
+    overflow: hidden;
+    padding: 12px;
+    height: 100%;
+    width: 17%;
+    font-size: 14px;
+    line-height: 24px;
+    text-align: right;
+    text-overflow: ellipsis;
+    column-span: 1;
+  }
+
   
   .table-head-item:not(:first-child):not(:last-child),
   .table-item:not(:first-child):not(:last-child) {
@@ -66,11 +236,3 @@
     color: #fff;
     background: #4990e2;
   }
-
-  .img {
-    width: 500px;
-    height: 500px;
-    background-position: 50% 50%;
-    background-repeat: no-repeat;
-    background-size: cover;
- }
