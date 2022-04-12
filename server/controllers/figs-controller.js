@@ -26,7 +26,9 @@ exports.figsCreate = async (req, res) => {
   var max = 0
   let minifig = 0
 
-  let name = req.body.name.replace(' ', '+')
+  const legalName = req.body.name.split('(')[0] //legal name is the name to be officially searched, just takes everything before any parenthesis
+
+  let name = legalName.replace(' ', '+')
 
   let set = req.body.setNumber.replace(' ', '+')
 
@@ -60,13 +62,14 @@ exports.figsCreate = async (req, res) => {
 
         const title1 = $(this).find('.s-item__title').text()
 
-        const title = title1.toUpperCase()
-
-        const namecaps = req.body.name.toUpperCase()
+        const title = title1.toUpperCase() //this will not be split, because names can be inconsistent
+        const title2 = title.split() //this will be used to filter against whole words, like set, kit, complete, etc.
+        
+        const nameCaps = legalName.toUpperCase()
 
         const setCaps = req.body.setNumber.toUpperCase()
 
-        if ((title.includes(setCaps) && title.includes(namecaps) && title.includes('FIG')) && !(title.includes('LOT') || title.includes('SET') || title.includes('COMPLETE'))) { 
+        if ((title.includes(setCaps) && title.includes(nameCaps) && title.includes('FIG')) && !(title2.includes('LOT') || title2.includes('SET') || title2.includes('COMPLETE') || title2.includes('KIT'))) { 
               if (!(nots.some(element => (title.includes(element))))){ //if title does not include any of the nots items
 
               const amount = $(this).find('.s-item__price').text()
