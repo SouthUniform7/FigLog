@@ -79,6 +79,45 @@
   .btn-add:hover {
     background-color: #2980b9;
   }
+
+  .btn-setNum {
+    padding: 12px 18px;
+    margin: 12px auto 0;
+    font-size: 14px;
+    font-weight: 700;
+    color: #fff;
+    background-color: #dfa700;
+    border-radius: 4px;
+  }
+  .btn-setNum:hover {
+    background-color: #ae8302;
+  }
+
+  .btn-price{
+    padding: 12px 18px;
+    margin: 12px auto 0;
+    font-size: 14px;
+    font-weight: 700;
+    color: #fff;
+    background-color: #00b90f;
+    border-radius: 4px;
+  }
+  .btn-price:hover {
+    background-color: #00950c;
+  }
+
+  .btn-chron {
+    padding: 12px 18px;
+    margin: 12px auto 0;
+    font-size: 12px;
+    font-weight: 700;
+    color: #fff;
+    background-color: #9165f8;
+    border-radius: 4px;
+  }
+  .btn-chron:hover {
+    background-color: #4f3293;
+  }  
   
   .btn-remove,
   .btn-reset {

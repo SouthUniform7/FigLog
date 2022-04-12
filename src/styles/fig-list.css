@@ -99,6 +99,11 @@
     text-transform: uppercase;
   }
 
+  .button-row {
+    display: flex;
+    flex-direction: row;
+  }
+
   .table-row {
     display: flex;
     align-content: center;

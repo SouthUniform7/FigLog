@@ -115,6 +115,48 @@ export const FigLog = () => {
     .catch(error => console.error(`There was an error resetting the FigLog: ${error}`))
   }
 
+  const orderBySet = async () => {
+    // Send GET request to 'figs/all' endpoint
+    axios
+      .get(`http://${link}/figs/set`)
+      .then(response => {
+        // Update the figs state
+        setFigs(response.data)
+
+        // Update loading state
+        setLoading(false)
+      })
+      .catch(error => console.error(`There was an error ordering the FigLog by set: ${error}`))
+  }
+
+  const orderByPrice = async () => {
+    // Send GET request to 'figs/all' endpoint
+    axios
+      .get(`http://${link}/figs/price`)
+      .then(response => {
+        // Update the figs state
+        setFigs(response.data)
+
+        // Update loading state
+        setLoading(false)
+      })
+      .catch(error => console.error(`There was an error ordering the FigLog by price: ${error}`))
+  }
+
+  const orderByID = async () => {
+    // Send GET request to 'figs/all' endpoint
+    axios
+      .get(`http://${link}/figs/all`)
+      .then(response => {
+        // Update the figs state
+        setFigs(response.data)
+
+        // Update loading state
+        setLoading(false)
+      })
+      .catch(error => console.error(`There was an error ordering the FigLog chronologically: ${error}`))
+  }
+
   return (
     <div className="fig-list-wrapper">
       {/* Form for creating new fig */}
@@ -146,6 +188,12 @@ export const FigLog = () => {
         </div>
 
         <button onClick={handleFigSubmit} className="btn btn-add">Add the Minifig</button>
+        
+        <div className="button-row">
+        <button onClick={orderBySet} className="btn btn-setNum">Order By Set</button>
+        <button onClick={orderByPrice} className="btn btn-price">Order By Price</button>
+        <button onClick={orderByID} className="btn btn-chron"><span>Order </span><span>Chronologically</span></button>
+        </div>
       </div>
 
       {/* Render FigList component */}

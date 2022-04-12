@@ -12,6 +12,9 @@ const router = express.Router()
 // this means that '/all' translates to '/figs/all'
 router.get('/all', figsRoutes.figsAll)
 
+router.get('/set', figsRoutes.orderBySet)
+router.get('/price', figsRoutes.orderByPrice)
+
 // Add route for POST request to create new fig
 // In server.js, figs route is specified as '/figs'
 // this means that '/create' translates to '/figs/create'

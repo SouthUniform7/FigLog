@@ -116,7 +116,56 @@ exports.figsCreate = async (req, res) => {
 }
 
 
+// order figs by set number ascending default
+exports.orderBySet = async (req, res) => {
+  // Get all figs from database
+  knex
+    .select('*') // select all records
+    .from('figs') // from 'figs' table
+    .orderBy("setNumber")
+    .then(userData => {
+      // Send figs extracted from database in response
+      res.json(userData)
+    })
+    .catch(err => {
+      // Send a error message in response
+      res.json({ message: `There was an error retrieving figs: ${err}` })
+    })
+}
 
+// order figs by price descending
+exports.orderByPrice = async (req, res) => {
+  // Get all figs from database
+  knex
+    .select('*') // select all records
+    .from('figs') // from 'figs' table
+    .orderBy("price", "desc")
+    .then(userData => {
+      // Send figs extracted from database in response
+      res.json(userData)
+    })
+    .catch(err => {
+      // Send a error message in response
+      res.json({ message: `There was an error retrieving figs: ${err}` })
+    })
+}
+
+// order figs by price descending
+exports.orderByID = async (req, res) => {
+  // Get all figs from database
+  knex
+    .select('*') // select all records
+    .from('figs') // from 'figs' table
+    .orderBy("id", "desc")
+    .then(userData => {
+      // Send figs extracted from database in response
+      res.json(userData)
+    })
+    .catch(err => {
+      // Send a error message in response
+      res.json({ message: `There was an error retrieving figs: ${err}` })
+    })
+}
 
 
 
