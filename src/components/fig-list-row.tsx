@@ -39,7 +39,7 @@ export const FigListRow = (props: FigListRowUI) => (
     </td>
 
     <td className="table-url">
-    <a href= {props.fig.listUrl}>eBay Listing</a>
+    <a href= {props.fig.listUrl}>Link</a>
     </td>
 
     <td className="table-btn">
