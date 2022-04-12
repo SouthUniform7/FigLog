@@ -134,7 +134,7 @@ export const FigLog = () => {
 
           <div className="form-row">
             <fieldset>
-              <label className="form-label" htmlFor="imageUrl">Enter Custom Image Url:</label>
+              <label className="form-label" htmlFor="imageUrl">(Optional) Enter Custom Image Url:</label>
               <input className="form-input" type="text" id="imageUrl" name="imageUrl" value={imageUrl} onChange={(e) => setImageUrl(e.currentTarget.value)} />
             </fieldset>
 
