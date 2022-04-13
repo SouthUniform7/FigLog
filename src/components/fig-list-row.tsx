@@ -35,7 +35,7 @@ export const FigListRow = (props: FigListRowUI) => (
     </td>
 
     <td className="table-price">
-      {props.fig.price}
+      ${props.fig.price}
     </td>
 
     <td className="table-url">
