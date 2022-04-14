@@ -1,70 +1,14 @@
-# Getting Started with Create React App
+# Fig Log - A Site for Collecting LEGO Minifigures
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Available Scripts
+## My first full stack web app developed in JavaScript running on NodeJS. Utilizes the front end framework ReactJS, and utilizes back end technologies of ExpressJS, SQLite, Cheerio for webscraping, Axios for making http requests, and Knex for building SQLite Queries.
 
-In the project directory, you can run:
+## About Fig Log
 
-### `npm start`
+LEGO, a product of interlocking construction blocks, has a large following of investors, collectors, and hobbyists. In late 2021 I realized that my personal collection, amassed mostly in my childhood, had seen a tremendous growth in resale value, specifically the "Minifigures" of characters in my LEGO building kits. Individual Minifigures, consisting of usually just 4 or 5 parts (legs, a torso with arms, a head, a headpiece/hat/hair, and maybe some kind of specific item such as a lightsaber) had seen transaction history in the hundreds or occasionally thousands of dollars. In an attempt to catalog my own collection, I decided to build my first full stack website. The site can take four items, the name of any LEGO minifigure, the product number of the set it came in, and two optional fields for providing any words to exclude from the search and a custom image. With that information, the site's backend performs an eBay search for completed sales of that figure from only that specific set, uses a web scraping algorithm to find the highest price ever sold for that figure. The backend then makes an insert into the SQLite database of the link to the highest listing, the price, the given name and set number, and even finds its own image link if not already provided with one. The ReactJS front end then makes calls to the database to retrieve the "Fig Log" of the minifigures and presents it to the user with buttons to sort by highest price, by set number, or just by the order the figs were added to the site.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## Contact Information
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+Feel free to contact me if you have any questions about the project or want to help out.
 
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+FigLogDev@gmail.com
