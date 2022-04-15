@@ -159,6 +159,10 @@ export const FigLog = () => {
 
   return (
     <div className="fig-list-wrapper">
+      <div className="title">
+          <div className="title-head">Fig Log</div>
+          <div className="title-desc">A Site for Collecting LEGO Minifigures</div>
+      </div>
       {/* Form for creating new fig */}
       <div className="fig-list-form">
         <div className="form-wrapper" onSubmit={handleFigSubmit}>
