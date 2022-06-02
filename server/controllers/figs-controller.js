@@ -24,7 +24,7 @@ exports.figsTotal = async (req, res) => {
   knex('figs').sum({cumu_sum: 'price'})
     .then(userData => {
       // Send figs extracted from database in response
-      res.json(userData[0].cumu_sum)
+      res.json(userData[0].cumu_sum.toFixed(2))
     })
     .catch(err => {
       // Send a error message in response
