@@ -19,6 +19,19 @@ exports.figsAll = async (req, res) => {
     })
 }
 
+exports.figsTotal = async (req, res) => {
+  // Get all figs from database
+  knex('figs').sum({cumu_sum: 'price'})
+    .then(userData => {
+      // Send figs extracted from database in response
+      res.json(userData[0].cumu_sum)
+    })
+    .catch(err => {
+      // Send a error message in response
+      res.json({ message: `There was an error retrieving the total price: ${err}` })
+    })
+}
+
 // Create new fig
 exports.figsCreate = async (req, res) => {
   // Add new fig to database

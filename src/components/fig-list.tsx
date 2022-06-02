@@ -26,7 +26,7 @@ interface FigListUI {
 // Create FigList component
 export const FigList = (props: FigListUI) => {
   // Show loading message
-  if (props.loading) return <p>Leaderboard table is loading...</p>
+  if (props.loading) return <p>FigLog is loading...</p>
 
   return (
     <table className="table">

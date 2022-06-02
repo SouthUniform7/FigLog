@@ -12,6 +12,7 @@ import './../styles/figlog.css'
 const link = '143.198.122.156'
 const local = 'localhost:4001'
 
+
 // Create figlog component
 export const FigLog = () => {
   // Prepare states
@@ -23,9 +24,12 @@ export const FigLog = () => {
   const [figs, setFigs] = useState([])
   const [loading, setLoading] = useState(true)
 
-  // Fetch all figs on initial render
+  const [total, setTotal] = useState(0)
+
+  // Fetch all figs and total price on initial render
   useEffect(() => {
     fetchFigs()
+    fetchTotal()
   }, [])
 
   // Fetch all figs
@@ -44,6 +48,16 @@ export const FigLog = () => {
         setLoading(false)
       })
       .catch(error => console.error(`There was an error retrieving the FigLog: ${error}`))
+  }
+
+  const fetchTotal = async () => {
+    // Send GET request to 'figs/total' endpoint
+    axios
+      .get(`http://${link}/figs/total`)
+      .then(response => {
+        setTotal(response.data)
+      })
+      .catch(error => console.error(`There was an error retrieving the cumulative price: ${error}`))
   }
 
   // Reset all input fields
@@ -67,9 +81,10 @@ export const FigLog = () => {
     .then(res => {
       console.log(res.data)
 
-      // Fetch all figs to refresh
+      // Fetch all figs and total to refresh
       // the figs on the fig log
       fetchFigs()
+      fetchTotal()
     })
     .catch(error => console.error(`There was an error creating the ${name} Minifig: ${error}`))
   }
@@ -88,7 +103,7 @@ export const FigLog = () => {
     }
   }
 
-  // Remove book
+  // Remove fig
   const handleFigRemove = (id: number, name: string) => {
     // Send PUT request to 'figs/delete' endpoint
     axios
@@ -99,6 +114,7 @@ export const FigLog = () => {
         // Fetch all figs to refresh
         // the figs on the figlog
         fetchFigs()
+        fetchTotal()
       })
       .catch(error => console.error(`There was an error removing the ${name} Minifig: ${error}`))
   }
@@ -111,6 +127,7 @@ export const FigLog = () => {
       // Fetch all figs to refresh
       // the figs on the figLog
       fetchFigs()
+      fetchTotal()
     })
     .catch(error => console.error(`There was an error resetting the FigLog: ${error}`))
   }
@@ -157,6 +174,10 @@ export const FigLog = () => {
       .catch(error => console.error(`There was an error ordering the FigLog chronologically: ${error}`))
   }
 
+  console.log(total)
+
+
+
   return (
     <div className="fig-list-wrapper">
       <div className="title">
@@ -194,10 +215,15 @@ export const FigLog = () => {
         <button onClick={handleFigSubmit} className="btn btn-add">Add the Minifig</button>
         
         <div className="button-row">
-        <button onClick={orderBySet} className="btn btn-setNum">Order By Set</button>
-        <button onClick={orderByPrice} className="btn btn-price">Order By Price</button>
-        <button onClick={orderByID} className="btn btn-chron"><span>Order </span><span>Chronologically</span></button>
+          <button onClick={orderBySet} className="btn btn-setNum">Order By Set</button>
+          <button onClick={orderByPrice} className="btn btn-price">Order By Price</button>
+          <button onClick={orderByID} className="btn btn-chron"><span>Order </span><span>Chronologically</span></button>
         </div>
+      </div>
+
+      {/* Render FigList Cumulative Sum */}
+      <div className="total">
+        Total Price: ${total}
       </div>
 
       {/* Render FigList component */}

@@ -12,6 +12,8 @@ const router = express.Router()
 // this means that '/all' translates to '/figs/all'
 router.get('/all', figsRoutes.figsAll)
 
+router.get('/total', figsRoutes.figsTotal)
+
 router.get('/set', figsRoutes.orderBySet)
 router.get('/price', figsRoutes.orderByPrice)
 
