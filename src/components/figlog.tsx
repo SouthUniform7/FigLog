@@ -183,8 +183,15 @@ export const FigLog = () => {
       <div className="title">
           <div className="title-head">Fig Log</div>
           <div className="title-desc">A Site for Collecting LEGO Minifigures</div>
+
+        <div className="podcast">
+          <div className="title-desc">I was quoted in The Vergecast! Listen Here!</div>
+          <iframe frameBorder="0" height="214" scrolling="no" src="https://playlist.megaphone.fm/?e=VMP5580072595" width="100%"></iframe>
+          <div className="title-desc-small">Listen around 17 minutes</div>
+        </div>
       </div>
       {/* Form for creating new fig */}
+
       <div className="fig-list-form">
         <div className="form-wrapper" onSubmit={handleFigSubmit}>
           <div className="form-row">
@@ -233,6 +240,9 @@ export const FigLog = () => {
       {figs.length > 0 && (
         <button className="btn btn-reset" onClick={handleListReset}>Reset minifigs list.</button>
       )}
+
+
+
     </div>
   )
 }
