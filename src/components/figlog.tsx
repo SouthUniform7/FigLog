@@ -10,7 +10,7 @@ import { FigList } from './fig-list'
 import './../styles/figlog.css'
 
 const link = '143.198.122.156'
-const local = 'localhost:4001'
+//const link = 'localhost:4001' //LOCAL
 
 
 // Create figlog component
@@ -186,7 +186,7 @@ export const FigLog = () => {
 
         <div className="podcast">
           <div className="title-desc">I was quoted in The Vergecast! Listen Here!</div>
-          <iframe frameBorder="0" height="214" scrolling="no" src="https://playlist.megaphone.fm/?e=VMP5580072595" width="100%"></iframe>
+          <iframe frameBorder="0" height="200" scrolling="no" src="https://playlist.megaphone.fm/?e=VMP5580072595" width="100%"></iframe>
           <div className="title-desc-small">Listen around 17 minutes</div>
         </div>
       </div>

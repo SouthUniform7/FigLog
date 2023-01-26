@@ -9,6 +9,7 @@ exports.figsAll = async (req, res) => {
   knex
     .select('*') // select all records
     .from('figs') // from 'figs' table
+    .orderBy('id', 'desc')
     .then(userData => {
       // Send figs extracted from database in response
       res.json(userData)
